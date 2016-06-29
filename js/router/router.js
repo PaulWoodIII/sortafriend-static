@@ -1,11 +1,42 @@
-var request = require('superagent');
+/*global Backbone */
 
-module.exports = {
+var request = require('superagent');
+var Friend = require('app/models/Friend');
+var SortedFriendsView = require('app/views/SortedFriendsView');
+var SortedFriendsCollection = require('app/models/FriendCollection');
+
+module.exports = Backbone.Router.extend({
+    initialize: function() {
+        let sortedFriendsCollection = new SortedFriendsCollection();
+
+        this.sortedFriendsView = new SortedFriendsView({
+            model: sortedFriendsCollection,
+            el: document.getElementById('friends-sorted')
+        });
+        this.sortedFriendsView.render();
+
+        sortedFriendsCollection.fetch({
+            success: function(data) {
+                console.log(data);
+            }
+        });
+
+    },
+    routes: {
+        "sort": "pairSorted"
+    },
+    pairSorted: function() {
+
+    }
+});
+
+/*
+{
 
     //returns a new user in an error first callback function
-    getNewUser: function(cb) {
+    getUser: function(cb) {
         request
-            .get('https://randomuser.me/api/')
+            .get('https://randomuser.me/api/?results=100')
             .set('Accept', 'application/json')
             .end(function(err, res) {
                 if (err) {
@@ -13,8 +44,8 @@ module.exports = {
                 } else {
                     cb(null, res);
                 }
-                // Calling the end function will send the request
             });
     }
 
 };
+*/

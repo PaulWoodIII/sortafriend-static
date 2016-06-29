@@ -1,60 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/*global Backbone _ */
-
-let AppRouter = require('app/router/router'); 
-
-window.addEventListener('load', function() {
-    
-    let router = new AppRouter();
-    Backbone.history.start();
-    Backbone.sync = function(method, model) {
-      alert(method + ": " + model.url);
-    };
-});
-
-// (function() {
-//   var proxiedSync = Backbone.sync;
-//   Backbone.sync = function(method, model, options) {
-//     options || (options = {});
-//     if (!options.crossDomain) {
-//       options.crossDomain = true;
-//     }
-//     if (!options.xhrFields) {
-//       options.xhrFields = {withCredentials:true};
-//     }
-//     return proxiedSync(method, model, options);
-//   };
-// })();
-},{"app/router/router":4}],2:[function(require,module,exports){
-/*global Backbone _ */
-
-module.exports = Backbone.Model.extend({
-    idAttribute: 'registered',
-    up:function(){
-        this.set('rank',this.get('rank') + 1);
-        console.log(this.get('rank'));
-    },
-    down:function(){
-        this.set('rank',this.get('rank') - 1);
-        console.log(this.get('rank'));
-    }
-});
-},{}],3:[function(require,module,exports){
-/*global Backbone */
-
-var Friend = require('app/models/Friend');
-module.exports = Backbone.Collection.extend({
-    initialize: function(models, options) {
-        //this.id = options.id;
-    },
-     parse: function(response) {
-        return response.results;
-    },
-    url: 'https://randomuser.me/api/?results=100',
-    model: Friend,
-});
-
-},{"app/models/Friend":2}],4:[function(require,module,exports){
 /*global Backbone */
 
 var request = require('superagent');
@@ -106,7 +50,36 @@ module.exports = Backbone.Router.extend({
 
 };
 */
-},{"app/models/Friend":2,"app/models/FriendCollection":3,"app/views/SortedFriendsView":5,"superagent":6}],5:[function(require,module,exports){
+},{"app/models/Friend":2,"app/models/FriendCollection":3,"app/views/SortedFriendsView":4,"superagent":5}],2:[function(require,module,exports){
+/*global Backbone _ */
+
+module.exports = Backbone.Model.extend({
+    idAttribute: 'registered',
+    up:function(){
+        this.set('rank',this.get('rank') + 1);
+        console.log(this.get('rank'));
+    },
+    down:function(){
+        this.set('rank',this.get('rank') - 1);
+        console.log(this.get('rank'));
+    }
+});
+},{}],3:[function(require,module,exports){
+/*global Backbone */
+
+var Friend = require('app/models/Friend');
+module.exports = Backbone.Collection.extend({
+    initialize: function(models, options) {
+        //this.id = options.id;
+    },
+     parse: function(response) {
+        return response.results;
+    },
+    url: 'https://randomuser.me/api/?results=100',
+    model: Friend,
+});
+
+},{"app/models/Friend":2}],4:[function(require,module,exports){
 /*global Backbone _ */
 
 module.exports = Backbone.View.extend({
@@ -149,7 +122,7 @@ module.exports = Backbone.View.extend({
         return this;   
     }
 });
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -1129,7 +1102,7 @@ request.put = function(url, data, fn){
   return req;
 };
 
-},{"./is-object":7,"./request":9,"./request-base":8,"emitter":10,"reduce":11}],7:[function(require,module,exports){
+},{"./is-object":6,"./request":8,"./request-base":7,"emitter":9,"reduce":10}],6:[function(require,module,exports){
 /**
  * Check if `obj` is an object.
  *
@@ -1144,7 +1117,7 @@ function isObject(obj) {
 
 module.exports = isObject;
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * Module of mixed-in functions shared between node and client code
  */
@@ -1492,7 +1465,7 @@ exports.send = function(data){
   return this;
 };
 
-},{"./is-object":7}],9:[function(require,module,exports){
+},{"./is-object":6}],8:[function(require,module,exports){
 // The node and browser modules expose versions of this with the
 // appropriate constructor function bound as first argument
 /**
@@ -1526,7 +1499,7 @@ function request(RequestConstructor, method, url) {
 
 module.exports = request;
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -1691,7 +1664,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 
 /**
  * Reduce `arr` with `fn`.

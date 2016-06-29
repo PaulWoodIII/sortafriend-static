@@ -1,15 +1,103 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <link href="/css/application_bootstrap.css" type="text/css" rel="stylesheet" >
-        <link href="/css/styles.css"  type="text/css" rel="stylesheet">
-    </head>
-    <body>
 
-        <script src="/js/jquery.js" charset="utf-8"></script>
-        <script src="/js/bootstrap.min.js" charset="utf-8"></script>
-        <script src="/js/app.js" charset="utf-8"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="/css/application_bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="/css/styles.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#">Sortafriend</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#sort">Sort</a></li>
+                    <li><a href="#list">List</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container">
+        <div id="main" class="row">
+            <div class="col-md-4 col-xs-12">
+                <aside id="sorted-list">
+                    <div id='gridView'>
+                        <!--Grid to be rendered here-->
+                    </div>
+                    <hr />
+                    <ul id="friends-sorted" class="list-group">
+                        <li class="list-group-item">
+                            <img class="circular" src="https://randomuser.me/api/portraits/thumb/men/84.jpg">
+                            <span class="badge">1</span> Paul Wood
+                        </li>
+                        <li class="list-group-item">
+                            <img class="circular" src="https://randomuser.me/api/portraits/thumb/men/82.jpg">
+
+                            <span class="badge">2</span> Luke Segars
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+            <div id="friend-sorter" class="col-md-8 col-xs-12">
+                <!-- Main component for a primary marketing message or call to action -->
+                <div class="row">
+                    <div id="friend-sorter-left" class="col-md-6 col-xs-6">
+                        <img class="img-circle center-block" src="https://randomuser.me/api/portraits/men/82.jpg">
+                        <h3 class="text-center">Paul Wood</h3>
+                        <a href="#" class="text-center btn btn-block btn-primary btn-lg" role="button">Choose</a>
+                    </div>
+                    <div id="friend-sorter-right" class="col-md-6 col-xs-6">
+                        <img class="img-circle center-block" src="https://randomuser.me/api/portraits/men/89.jpg">
+                        <h3 class="text-center">Luke Segars</h3>
+                        <a href="#" class="text-center btn btn-block btn-primary btn-lg" role="button">Choose</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="/js/jquery.js" charset="utf-8"></script>
+    <script src="/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="/js/underscore.js" charset="utf-8"></script>
+    <script src="/js/backbone.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+</body>
+
 </html>
